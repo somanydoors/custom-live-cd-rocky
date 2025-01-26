@@ -24,7 +24,6 @@ RUN git clone \
 
 COPY --chmod=755 --chown=root:root build.sh /usr/local/bin/build
 
-
 VOLUME [ "/out", "/in" ]
 
 WORKDIR /out
