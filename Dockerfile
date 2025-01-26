@@ -20,4 +20,8 @@ COPY --chmod=755 --chown=root:root build.sh /usr/local/bin/build
 
 COPY --chmod=644 --chown=root:root custom.ks /in/custom.ks
 
+VOLUME [ "/out" ]
+
+WORKDIR /out
+
 CMD ["build"]
