@@ -6,5 +6,5 @@ ksflatten \
 
 livecd-creator --verbose \
     --config=/out/live.ks \
-    --fslabel="RockyLiveCD" \
+    --fslabel="${CD_LABEL}" \
     --cache=/var/cache/live
