@@ -5,6 +5,9 @@ ARG ROCKY_VERSION=9
 ENV CD_LABEL="RockyLiveCD"
 ENV CUSTOM_KICKSTART="custom"
 ENV FLATTENED_KICKSTART="live"
+ENV SSH_ENABLED=true
+ENV SSH_AUTHORIZED_KEY=
+ENV SSH_KEY_URL=
 
 RUN dnf install -y epel-release \
     && dnf install -y \
@@ -21,9 +24,7 @@ RUN git clone \
 
 COPY --chmod=755 --chown=root:root build.sh /usr/local/bin/build
 
-COPY --chmod=644 --chown=root:root custom.ks /in/custom.ks
-
-VOLUME [ "/out" ]
+VOLUME [ "/out", "/in" ]
 
 WORKDIR /out
 
