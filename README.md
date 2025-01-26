@@ -29,6 +29,7 @@ These environnment variables can be set at runtime to customize the generated li
 | `CD_LABEL` | Sets the label of the ISO filesystem for the live CD image. This value must not have spaces, as spaces are not allowed in ISO filesystem labels. | `RockyLiveCD` |
 | `CUSTOM_KICKSTART` | Determines the base name of the customization Kickstart file (without `.ks` extension) | `custom` |
 | `FLATTENED_KICKSTART` | Determines the base name of the Kickstart file output from merging the customization and upstream Kickstart files (without `.ks` extension) | `live` |
+| `SSH_ENABLED` | Determines whether the `sshd` service is started at boot | `true` |
 
 ## How it Works
 

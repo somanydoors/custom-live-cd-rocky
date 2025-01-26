@@ -5,6 +5,7 @@ ARG ROCKY_VERSION=9
 ENV CD_LABEL="RockyLiveCD"
 ENV CUSTOM_KICKSTART="custom"
 ENV FLATTENED_KICKSTART="live"
+ENV SSH_ENABLED=true
 
 RUN dnf install -y epel-release \
     && dnf install -y \
