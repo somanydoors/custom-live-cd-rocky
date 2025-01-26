@@ -10,6 +10,7 @@ docker run \
     -e CD_LABEL="RockyLiveCD" \
     -e CUSTOM_KICKSTART="custom" \
     -e FLATTENED_KICKSTART="live" \
+    -e AUTOLOGIN_ENABLED=true \
     -v $(pwd):/out \
     ghcr.io/spencerhughes/custom-live-cd-rocky:9
 ```
@@ -38,6 +39,7 @@ live CD:
 | `SSH_ENABLED` | Determines whether the `sshd` service is started at boot | `true` |
 | `SSH_AUTHORIZED_KEY` | SSH public key to be embedded into the `authorized_keys` of the `root` user within the live CD OS | *Unset* |
 | `SSH_KEY_URL` | URL from which to download public keys for the `root` user at boot | *Unset* |
+| `AUTOLOGIN_ENABLED` | Determines whether the `root` account logs in on the console automatically | `true` |
 
 ## How it Works
 
