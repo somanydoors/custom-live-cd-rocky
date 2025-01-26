@@ -59,6 +59,8 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 			cat <<-EOF >>"/in/${CUSTOM_KICKSTART}.ks"
 				%post --nochroot
 				cp /tmp/authorized-keys-from-url \$INSTALL_ROOT/usr/local/bin
+				chmod u=rwx,go=rx \$INSTALL_ROOT/usr/local/bin/authorized-keys-from-url
+				chown root:root \$INSTALL_ROOT/usr/local/bin/authorized-keys-from-url
 				cp /tmp/authorized-keys-from-url.service \$INSTALL_ROOT/etc/systemd/system
 
 				%end
