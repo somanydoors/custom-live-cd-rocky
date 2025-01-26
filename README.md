@@ -13,6 +13,7 @@ docker run \
 ```
 
 If a Kickstart file is placed into /custom, the configuration variables will be overridden and the custom config will be used as-is.
+This will build a live CD image and place it in the current working directory, as well as the rendered Kickstart file used to build the live CD.
 
 ### Variables
 
