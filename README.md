@@ -8,6 +8,7 @@ Docker image to generate customized Rocky Linux live CD ISOs
 docker run \
     --privileged \
     -e VAR=value \
+    -v $(pwd):/out \
     ghcr.io/spencerhughes/custom-live-cd-rocky:9
 ```
 
