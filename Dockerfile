@@ -6,6 +6,7 @@ ENV CD_LABEL="RockyLiveCD"
 ENV CUSTOM_KICKSTART="custom"
 ENV FLATTENED_KICKSTART="live"
 ENV SSH_ENABLED=true
+ENV SSH_AUTHORIZED_KEY=
 
 RUN dnf install -y epel-release \
     && dnf install -y \

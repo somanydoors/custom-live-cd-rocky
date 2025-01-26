@@ -11,6 +11,19 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 		# Enable the SSH service
 		echo 'services --disabled="" --enabled="NetworkManager,ModemManager,sshd"' >> "/in/${CUSTOM_KICKSTART}.ks"
 
+		if [ ! -z "${SSH_AUTHORIZED_KEY}" ]; then
+
+			# Add a step to the custom Kickstart to write the SSH key to root's authorized_keys
+			cat <<-EOF >> "/in/${CUSTOM_KICKSTART}.ks"
+			%post --nochroot
+			echo "${SSH_AUTHORIZED_KEY}" > \$INSTALL_ROOT/root/.ssh/authorized_keys
+			chown root:root \$INSTALL_ROOT/root/.ssh/authorized_keys
+			chmod u=rw,go= \$INSTALL_ROOT/root/.ssh/authorized_keys
+
+			%end
+
+			EOF
+		fi
 	fi
 fi
 

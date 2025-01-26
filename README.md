@@ -30,6 +30,7 @@ These environnment variables can be set at runtime to customize the generated li
 | `CUSTOM_KICKSTART` | Determines the base name of the customization Kickstart file (without `.ks` extension) | `custom` |
 | `FLATTENED_KICKSTART` | Determines the base name of the Kickstart file output from merging the customization and upstream Kickstart files (without `.ks` extension) | `live` |
 | `SSH_ENABLED` | Determines whether the `sshd` service is started at boot | `true` |
+| `SSH_AUTHORIZED_KEY` | SSH public key to be embedded into the `authorized_keys` of the `root` user within the live CD OS | *Unset* |
 
 ## How it Works
 
