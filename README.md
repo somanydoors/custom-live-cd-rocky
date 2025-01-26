@@ -10,6 +10,9 @@ docker run \
     -e CD_LABEL="RockyLiveCD" \
     -e CUSTOM_KICKSTART="custom" \
     -e FLATTENED_KICKSTART="live" \
+    -e SSH_ENABLED=true \
+    -e SSH_AUTHORIZED_KEY="ssh-ed25519 AAAAC3..." \
+    -e SSH_KEY_URL="https://github.com/username.keys" \
     -e AUTOLOGIN_ENABLED=true \
     -e LIVE_PRODUCT_LABEL="Custom Rocky 9 live CD" \
     -v $(pwd):/out \
