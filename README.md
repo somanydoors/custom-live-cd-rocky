@@ -8,7 +8,7 @@ Docker image to generate customized Rocky Linux live CD ISOs
 docker run \
     --privileged \
     -e VAR=value \
-    repo/image
+    ghcr.io/spencerhughes/custom-live-cd-rocky:9
 ```
 
 If a Kickstart file is placed into /custom, the configuration variables will be overridden and the custom config will be used as-is.
