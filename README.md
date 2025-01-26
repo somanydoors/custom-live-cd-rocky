@@ -7,7 +7,7 @@ Docker image to generate customized Rocky Linux live CD ISOs
 ```bash
 docker run \
     --privileged \
-    -e VAR=value \
+    -e CD_LABEL="RockyLiveCD" \
     -v $(pwd):/out \
     ghcr.io/spencerhughes/custom-live-cd-rocky:9
 ```
@@ -24,7 +24,7 @@ These environnment variables can be set at runtime to customize the generated li
 
 | Name | Description | Default |
 | ---- | ----------- | ------- |
-| VAR | Configures output | `value` |
+| `CD_LABEL` | Sets the label of the ISO filesystem for the live CD image. This value must not have spaces, as spaces are not allowed in ISO filesystem labels. | `RockyLiveCD` |
 
 ## How it Works
 
