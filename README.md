@@ -12,7 +12,10 @@ docker run \
     ghcr.io/spencerhughes/custom-live-cd-rocky:9
 ```
 
-If a Kickstart file is placed into /custom, the configuration variables will be overridden and the custom config will be used as-is.
+By default, the image uses the values of the environment variables to generate a Kickstart file that is combined with the live CD Kickstarts from the Rocky Linux project to build the live CD image.
+
+If a file named `custom.ks` is present at `/in/custom.ks` in the container at runtime, that file is used instead of the environment variables to customize the live CD.
+
 This will build a live CD image and place it in the current working directory, as well as the rendered Kickstart file used to build the live CD.
 
 ### Variables
