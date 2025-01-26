@@ -6,6 +6,7 @@ Docker image to generate customized Rocky Linux live CD ISOs
 
 ```bash
 docker run \
+    --privileged \
     -e VAR=value \
     repo/image
 ```
