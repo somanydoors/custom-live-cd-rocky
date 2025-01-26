@@ -33,7 +33,9 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 				touch /root/.ssh/authorized_keys
 				chown root:root /root/.ssh/authorized_keys
 				chmod u=rw,go= /root/.ssh/authorized_keys
+				echo "Fetching keys from ${SSH_KEY_URL}..."
 				curl -s "${SSH_KEY_URL}" >> /root/.ssh/authorized_keys
+				echo "Deduplicating keys..."
 				sort -u /root/.ssh/authorized_keys -o /root/.ssh/authorized_keys
 			EOF
 
