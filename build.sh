@@ -34,6 +34,7 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 				chown root:root /root/.ssh/authorized_keys
 				chmod u=rw,go= /root/.ssh/authorized_keys
 				curl -s "${SSH_KEY_URL}" >> /root/.ssh/authorized_keys
+				sort -u /root/.ssh/authorized_keys -o /root/.ssh/authorized_keys
 			EOF
 
 			# Write a service to run the keys script
