@@ -68,6 +68,21 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 			EOF
 		fi
 	fi
+
+	if [ "${AUTOLOGIN_ENABLED}" ]; then
+		cat <<-EOF >>"/in/${CUSTOM_KICKSTART}.ks"
+			%post
+			mkdir -p /etc/systemd/system/getty@tty1.service.d
+			cat <<-END >/etc/systemd/system/getty@tty1.service.d/override.conf
+			[Service]
+			ExecStart=
+			ExecStart=-/sbin/agetty --autologin root --noclear %I \$TERM
+			END
+
+			%end
+
+		EOF
+	fi
 fi
 
 ksflatten \

@@ -8,6 +8,7 @@ ENV FLATTENED_KICKSTART="live"
 ENV SSH_ENABLED=true
 ENV SSH_AUTHORIZED_KEY=
 ENV SSH_KEY_URL=
+ENV AUTOLOGIN_ENABLED=true
 
 RUN dnf install -y epel-release-9-7.el9 \
     && dnf install -y \
