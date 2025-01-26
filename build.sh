@@ -27,8 +27,11 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 
 		if [ ! -z "${SSH_KEY_URL}" ]; then
 
-			# Write a script to download the keys from URL and append them to authorized_keys
-			cat <<-EOF >/tmp/authorized-keys-from-url
+			# Add tasks to the custom kickstart to copy the script and service into the image and enable the service at startup
+			cat <<-EOF >>"/in/${CUSTOM_KICKSTART}.ks"
+				%post
+				echo "Writing /usr/local/bin/authorized-keys-from-url..."
+				cat <<-END >/usr/local/bin/authorized-keys-from-url
 				#!/bin/sh
 				touch /root/.ssh/authorized_keys
 				chown root:root /root/.ssh/authorized_keys
@@ -37,10 +40,13 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 				curl -s "${SSH_KEY_URL}" >> /root/.ssh/authorized_keys
 				echo "Deduplicating keys..."
 				sort -u /root/.ssh/authorized_keys -o /root/.ssh/authorized_keys
-			EOF
+				END
 
-			# Write a service to run the keys script
-			cat <<-EOF >>/tmp/authorized-keys-from-url.service
+				chmod u=rwx,go=rx /usr/local/bin/authorized-keys-from-url
+				chown root:root /usr/local/bin/authorized-keys-from-url
+
+				echo "Writing /etc/systemd/system/authorized-keys-from-url.service..."
+				cat <<-END >/etc/systemd/system/authorized-keys-from-url.service
 				[Unit]
 				Description=Download SSH public keys from URL
 				After=network-online.target
@@ -53,19 +59,9 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 
 				[Install]
 				WantedBy=multi-user.target
-			EOF
+				END
 
-			# Add tasks to the custom kickstart to copy the script and service into the image and enable the service at startup
-			cat <<-EOF >>"/in/${CUSTOM_KICKSTART}.ks"
-				%post --nochroot
-				cp /tmp/authorized-keys-from-url \$INSTALL_ROOT/usr/local/bin
-				chmod u=rwx,go=rx \$INSTALL_ROOT/usr/local/bin/authorized-keys-from-url
-				chown root:root \$INSTALL_ROOT/usr/local/bin/authorized-keys-from-url
-				cp /tmp/authorized-keys-from-url.service \$INSTALL_ROOT/etc/systemd/system
-
-				%end
-
-				%post
+				echo "Enabling authorized-keys-from-url.service..."
 				systemctl enable authorized-keys-from-url.service
 
 				%end
