@@ -11,6 +11,7 @@ docker run \
     -e CUSTOM_KICKSTART="custom" \
     -e FLATTENED_KICKSTART="live" \
     -e AUTOLOGIN_ENABLED=true \
+    -e LIVE_PRODUCT_LABEL="Custom Rocky 9 live CD" \
     -v $(pwd):/out \
     ghcr.io/spencerhughes/custom-live-cd-rocky:9
 ```
@@ -34,6 +35,7 @@ live CD:
 | Name | Description | Default |
 | ---- | ----------- | ------- |
 | `CD_LABEL` | Sets the label of the ISO filesystem for the live CD image. This value must not have spaces, as spaces are not allowed in ISO filesystem labels. | `RockyLiveCD` |
+| `LIVE_PRODUCT_LABEL` | Sets the product label, used to set the name in the GRUB boot menu | `Custom Rocky ${ROCKY_VERSION} live CD` |
 | `CUSTOM_KICKSTART` | Determines the base name of the customization Kickstart file (without `.ks` extension) | `custom` |
 | `FLATTENED_KICKSTART` | Determines the base name of the Kickstart file output from merging the customization and upstream Kickstart files (without `.ks` extension) | `live` |
 | `SSH_ENABLED` | Determines whether the `sshd` service is started at boot | `true` |

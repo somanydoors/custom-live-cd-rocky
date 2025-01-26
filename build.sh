@@ -93,5 +93,6 @@ ksflatten \
 livecd-creator \
 	--verbose \
 	--config="/out/${FLATTENED_KICKSTART}.ks" \
+	--product="${LIVE_PRODUCT_LABEL}" \
 	--fslabel="${CD_LABEL}" \
 	--cache=/var/cache/live
