@@ -8,6 +8,7 @@ Docker image to generate customized Rocky Linux live CD ISOs
 docker run \
     --privileged \
     -e CD_LABEL="RockyLiveCD" \
+    -e CUSTOM_KICKSTART="custom" \
     -e FLATTENED_KICKSTART="live" \
     -v $(pwd):/out \
     ghcr.io/spencerhughes/custom-live-cd-rocky:9
@@ -26,6 +27,7 @@ These environnment variables can be set at runtime to customize the generated li
 | Name | Description | Default |
 | ---- | ----------- | ------- |
 | `CD_LABEL` | Sets the label of the ISO filesystem for the live CD image. This value must not have spaces, as spaces are not allowed in ISO filesystem labels. | `RockyLiveCD` |
+| `CUSTOM_KICKSTART` | Determines the base name of the customization Kickstart file (without `.ks` extension) | `custom` |
 | `FLATTENED_KICKSTART` | Determines the base name of the Kickstart file output from merging the customization and upstream Kickstart files (without `.ks` extension) | `live` |
 
 ## How it Works
