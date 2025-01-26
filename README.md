@@ -16,7 +16,7 @@ docker run \
     -e AUTOLOGIN_ENABLED=true \
     -e LIVE_PRODUCT_LABEL="Custom Rocky 9 live CD" \
     -v $(pwd):/out \
-    ghcr.io/spencerhughes/custom-live-cd-rocky:9
+    ghcr.io/somanydoors/custom-live-cd-rocky:9
 ```
 
 By default, the image uses the values of the environment variables to generate
