@@ -25,4 +25,4 @@ These environnment variables can be set at runtime to customize the generated li
 
 ## How it Works
 
-A [Kickstart]() file is generated or provided by the user, then `ksflatten` is used to merge the project-provided live CD Kickstart files with the custom Kickstart. The merged Kickstart file is then passed to `livecd-creator`, which is used to build a live CD ISO image.
+A [Kickstart](https://docs.fedoraproject.org/en-US/fedora/f36/install-guide/appendixes/Kickstart_Syntax_Reference/) file is generated or provided by the user, then `ksflatten` is used to merge the project-provided live CD Kickstart files with the custom Kickstart. The merged Kickstart file is then passed to `livecd-creator`, which is used to build a live CD ISO image.
