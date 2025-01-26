@@ -15,10 +15,10 @@ if ! [ -f "/in/${CUSTOM_KICKSTART}.ks" ]; then
 
 			# Add a step to the custom Kickstart to write the SSH key to root's authorized_keys
 			cat <<-EOF >>"/in/${CUSTOM_KICKSTART}.ks"
-				%post --nochroot
-				echo "${SSH_AUTHORIZED_KEY}" > \$INSTALL_ROOT/root/.ssh/authorized_keys
-				chown root:root \$INSTALL_ROOT/root/.ssh/authorized_keys
-				chmod u=rw,go= \$INSTALL_ROOT/root/.ssh/authorized_keys
+				%post
+				echo "${SSH_AUTHORIZED_KEY}" > /root/.ssh/authorized_keys
+				chown root:root /root/.ssh/authorized_keys
+				chmod u=rw,go= /root/.ssh/authorized_keys
 
 				%end
 
