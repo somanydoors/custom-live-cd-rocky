@@ -30,6 +30,9 @@ the live CD.
 This will build a live CD image and place it in the current working directory,
 as well as the rendered Kickstart file used to build the live CD.
 
+The default image builds against Rocky Linux 9, but changing the tag to `8`
+will build using that version of Rocky instead.
+
 ### Variables
 
 These environnment variables can be set at runtime to customize the generated
