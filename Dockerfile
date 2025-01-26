@@ -3,6 +3,7 @@ FROM rockylinux:${ROCKY_VERSION}
 
 ARG ROCKY_VERSION=9
 ENV CD_LABEL="RockyLiveCD"
+ENV FLATTENED_KICKSTART="live"
 
 RUN dnf install -y epel-release \
     && dnf install -y \
